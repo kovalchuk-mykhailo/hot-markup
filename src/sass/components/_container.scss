@@ -1,0 +1,31 @@
+@import "../abstracts/variables";
+
+.back-link-container {
+  display: flex;
+  position: absolute;
+  left: $margin-main;
+  // margin-left: $margin-main;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: $page-width;
+  height: $page-height;
+}
+
+.link-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.menu-container {
+  display: flex;
+  position: absolute;
+  right: $margin-main;
+}

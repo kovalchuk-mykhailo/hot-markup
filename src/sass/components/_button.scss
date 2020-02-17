@@ -1,0 +1,9 @@
+@import "./some";
+
+.link-button {
+  @extend .marg-top;
+  color: black;
+  width: 85%;
+  background-color: #2196f3 !important;
+  border-radius: 20px;
+}

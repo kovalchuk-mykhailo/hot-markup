@@ -1,0 +1,8 @@
+@import "../abstracts/variables";
+
+.Default-Wrapper {
+  background: $back-main;
+  min-height: $page-height;
+  display: flex;
+  justify-content: center;
+}
