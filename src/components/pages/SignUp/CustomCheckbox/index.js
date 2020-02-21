@@ -2,7 +2,7 @@ import React from "react";
 import { Checkbox, withStyles } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 
-export const CustomCheckox = withStyles({
+export const CustomCheckbox = withStyles({
   root: {
     color: grey[50],
     "&$checked": {

@@ -1,9 +1,15 @@
 @import "./some";
+@import "../abstracts/variables";
 
 .link-button {
   @extend .marg-top;
-  color: black;
   width: 85%;
-  background-color: #2196f3 !important;
-  border-radius: 20px;
+  background-color: $back-color-btn !important;
+  border-radius: 8px !important;
+}
+
+.sky-button {
+  color: white !important;
+  background-color: $back-color-btn !important;
+  border-radius: 8px !important;
 }

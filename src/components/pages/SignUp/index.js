@@ -2,20 +2,21 @@ import React from "react";
 
 import Header from "../../Header";
 import EmailPassInputs from "./EmailPassInputs";
+import { CustomCheckbox } from "./CustomCheckbox";
+import ListLinks from "./ListLinks";
+import GreyLink from "../../GreyLink";
+import BlueLink from "../../BlueLink";
+import LinkButton from "../../LinkButton";
+import { Grid } from "@material-ui/core";
 
 import "../../../sass/components/_container.scss";
 import "../../../sass/components/_button.scss";
 import "../../../sass/components/_checkbox.scss";
 import "../../../sass/components/_some.scss";
 
-import { Grid, FormControlLabel, Link } from "@material-ui/core";
-import { CustomCheckox } from "./CustomCheckbox";
-import ListLinks from "./ListLinks";
-import GreyLink from "../../GreyLink";
-import LinkButton from "../../LinkButton";
 import { USER_PROFILE_PATH } from "../../../constants/Pathes";
 
-const infosForLinks = [
+const textForLinks = [
   { to: "/police", children: "Privacy police" },
   { to: "/terms", children: "Terms & Conditions" },
   { to: "/contact", children: "Contact Support" }
@@ -34,26 +35,21 @@ function SignUp() {
         />
       </Grid>
       <EmailPassInputs />
-      <FormControlLabel
-        value="end"
-        control={<CustomCheckox />}
-        label={
-          <div style={{ color: "#fafafa", fontSize: "small" }}>
-            I agree to <Link to="/terms">Terms & Conditions</Link>
-          </div>
-        }
-        labelPlacement="end"
-        className="control-chb"
-      />
+      <div className="marg-top">
+        <CustomCheckbox />
+        <span style={{ color: "#fafafa", fontSize: "small" }}>
+          I agree to <BlueLink to="/terms">Terms & Conditions</BlueLink>
+        </span>
+      </div>
       <LinkButton to={USER_PROFILE_PATH}>Sign Up</LinkButton>
-      <Link to="/signin" className="marg-top">
+      <BlueLink to="/signin" marginTop>
         Already registered? Sign In
-      </Link>
+      </BlueLink>
       <div className="link-container">
         <GreyLink to="/requirements">
           18 U.S.C. 2257 Record Keeping Requirements Compliance Statement
         </GreyLink>
-        <ListLinks items={infosForLinks} />
+        <ListLinks items={textForLinks} />
       </div>
     </div>
   );

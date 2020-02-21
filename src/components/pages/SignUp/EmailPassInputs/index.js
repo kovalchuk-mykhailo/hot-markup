@@ -1,4 +1,5 @@
 import React from "react";
+import { withStyles } from "@material-ui/core/styles";
 
 import {
   Grid,
@@ -17,18 +18,27 @@ import "../../../../sass/components/_textfield.scss";
 const styles = {
   whiteColor: {
     color: "white"
+  },
+  clGrey: {
+    color: "grey"
+  },
+  input: {
+    "&::placeholder": {
+      textOverflow: "ellipsis !important",
+      color: "grey"
+    }
   }
 };
 
-const CustomInputAdornment = ({ children }) => (
+const CustomInputAdornment = ({ children, style, position, ...props }) => (
   <>
-    <InputAdornment position="start" style={{ minWidth: "30%" }}>
+    <InputAdornment position="start" style={{ minWidth: "100px" }} {...props}>
       {children}
     </InputAdornment>
   </>
 );
 
-const EmailPassInputs = () => {
+const EmailPassInputs = ({ classes }) => {
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false
@@ -54,19 +64,22 @@ const EmailPassInputs = () => {
           type="Email"
           required
           fullWidth
+          style={styles.clGrey}
           InputProps={{
-            startAdornment: <CustomInputAdornment>Email</CustomInputAdornment>
+            startAdornment: <CustomInputAdornment>Email</CustomInputAdornment>,
+            classes: { input: classes["input"] }
           }}
         />
       </Grid>
       <Grid item xs={12}>
-        <FormControl className="class...">
+        <FormControl style={{ width: "100%" }}>
           <Input
             id="standard-adornment-password"
             type={values.showPassword ? "text" : "password"}
             value={values.password}
             onChange={handleChange("password")}
             placeholder="Create a Password"
+            style={styles.clGrey}
             startAdornment={
               <CustomInputAdornment>Password</CustomInputAdornment>
             }
@@ -86,21 +99,23 @@ const EmailPassInputs = () => {
               </InputAdornment>
             }
           />
-          <FormHelperText
-            id="filled-weight-helper-text"
-            style={{
-              textAlign: "center",
-              fontSize: "0.7rem",
-              color: "grey",
-              marginTop: "10px"
-            }}
-          >
-            Password must be minimum 8 characters
-          </FormHelperText>
+          {values.password.length < 8 ? (
+            <FormHelperText
+              id="filled-weight-helper-text"
+              style={{
+                textAlign: "center",
+                fontSize: "0.6rem",
+                color: "grey",
+                marginTop: "10px"
+              }}
+            >
+              Password must be minimum 8 characters
+            </FormHelperText>
+          ) : null}
         </FormControl>
       </Grid>
     </Grid>
   );
 };
 
-export default EmailPassInputs;
+export default withStyles(styles)(EmailPassInputs);
